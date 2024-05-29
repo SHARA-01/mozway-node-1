@@ -22,14 +22,12 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'User Register' });
 });
 
-
-
 app.get('/data', async(req, res) => {
    let data = await DatabaseData();
    if(data.ok){
     data = data.data;
    }
-    res.render('DataDisplay', { title: 'Database Atlas Data',   data });
+    res.render('DataDisplay', { title: 'Atlas Database',   data });
   });
 
 app.post('/user', registerUser )
