@@ -3,13 +3,13 @@ import { User } from '../models/user.model.js';
 
 const registerUser = asyncHandler(async (req, res) => {
     try {
-        const { firstName, lastName, email, mobile, street, city, state, country, login_ID, password, createdTime, last_updated_on } = req.body;
+        const { firstName, lastName, email, mobile, street, city, state, country, login_ID, password} = req.body;
         if (!email || !password) {
             throw new Error(console.error("All required feild required", error))
         }
         const existUser = await User.findOne({ email })
         if (existUser) {
-            throw new Error(console.log("User Already exits", existUser))
+            return res.status(500).json("User Already Exits !")
         }
         else {
             let addressInfo = undefined;

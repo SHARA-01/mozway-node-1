@@ -83,7 +83,7 @@
             <button style="border-radius: 15px; padding: 5px;width:20%;" type="submit">Register</button>
         </div>
     </form>
-    <div id="response"></div>
+   
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -112,15 +112,14 @@
                     contentType: 'application/json',
                     data: JSON.stringify(userData),
                     success: function (response) {
-                        $('#response').text(response.message);
-                        toastr.success(response.message);
+                        toastr.success(response);
                     },
                     error: function (xhr, status, error) {
                         const errors = xhr.responseJSON.errors;
                         $.each(errors, function (key, value) {
                             $('#error-' + key).text(value);
                         });
-                        toastr.error(errors);
+                        toastr.error(error);
                     }
                 });
             });
