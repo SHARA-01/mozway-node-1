@@ -119,6 +119,7 @@
                         $.each(errors, function (key, value) {
                             $('#error-' + key).text(value);
                         });
+                        console.log(xhr, status, error)
                         toastr.error(error);
                     }
                 });

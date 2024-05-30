@@ -9,7 +9,7 @@ const registerUser = asyncHandler(async (req, res) => {
         }
         const existUser = await User.findOne({ email })
         if (existUser) {
-            return res.status(500).json("User Already Exits !")
+            return res.status(200).json("User Already Exits !")
         }
         else {
             let addressInfo = undefined;
