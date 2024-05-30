@@ -94,11 +94,12 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required:[true, "Loggin Id is required"],
         trim: true,
+        minlength: [8, "Login id should be at least 8 chareacter"],
         validate: {
           validator: function(v) {
-              return typeof v === 'string' && /^[a-zA-Z\d]+$/.test(v);
+              return typeof v === 'string' && /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+$/.test(v);
             },
-          message: 'Please enter a valid login id.',
+          message: 'Login Id must contain at least a number and a letter',
         },  
 
     },
