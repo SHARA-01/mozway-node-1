@@ -3,6 +3,7 @@ import registerUser  from "./controller/contoller.js";
 import DatabaseData  from "./controller/GetData.js";
 import path from 'node:path'
 import bodyParser from "body-parser";
+import { formatDate } from "./controller/dateFormate.js";
 
 import { fileURLToPath } from 'url'
 
@@ -17,6 +18,12 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(bodyParser.json());
+
+// middle ware for date formate 
+app.use((req, res, next) => {
+  res.locals.formatDate = formatDate;
+  next();
+});
 
 app.get('/', (req, res) => {
   res.render('index', { title: 'User Register' });

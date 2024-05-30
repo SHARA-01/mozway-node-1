@@ -12,11 +12,20 @@
 <body>
     <style>
         td{
-            padding: 0.5rem 5rem;  text-align: center; min-width: 5rem; max-width: 5rem;
+            display: flex;
+            justify-content: center;
+            justify-items: stretch ;
+            padding: 0.5rem 5px;  text-align: center; min-width: 10rem; 
+            max-width: 10rem; 
+            margin: 0px 2rem;
 
         }
-        th{
-            padding: 0.5rem 5rem;  text-align: center; min-width: 5rem; max-width: 5rem; 
+        th{display: flex;
+            justify-content: center;
+            justify-items: stretch ;
+            padding: 0.5rem 5px;  text-align: center; min-width: 10rem; 
+            max-width: 10rem; 
+            margin: 0px 2rem; 
         }
 
     .btn {
@@ -34,20 +43,22 @@
     </h1>
     <div id="response">
         <table style="display: flex; flex-flow: column; width: 95%; margin: auto;">
-            <tr style="display: flex; gap: 3.6rem; padding: 2px 5px;margin: 3px; border-bottom: 1px solid gray;">
+            <tr style="display: flex; gap:5px; padding: 2px 5px;margin: 3px; border-bottom: 1px solid gray;">
                 <th>Full Name</th>
                 <th>Email</th>
                 <th>Mobile</th>
                 <th>login Id</th>
-                <th>Address</th>
+                <th>Address (City)</th>
+                <th>Created At</th>
             </tr>
             <% data?.map(function(item, index){ %>
-                <tr key="index" style="display: flex; gap: 3.6rem; padding: 2px 5px;margin: 3px; border-bottom: 1px solid gray;">
+                <tr key="index" style="display: flex; gap:5px; padding: 2px 5px;margin: 3px; border-bottom: 1px solid gray;">
                     <td><%= item?.first_name %> <%= item?.last_name %></td>
                     <td><%= item?.email %></td>
                     <td><%= item?.mobile_number %></td>
                     <td><%= item?.login_id %></td>
                     <td><%= item?.address?.city %></td> 
+                    <td><%= formatDate(item?.createdAt, "dd-LLL-yyyy") %></td> 
                 </tr>
                 <% }) %>
         </table>
